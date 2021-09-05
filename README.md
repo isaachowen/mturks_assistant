@@ -15,38 +15,49 @@ Use excel not csv because excel can be edited both by notebooks and manually. Th
 
 The 7 directories created inside of a project directory serve the following purpose:
 
-# 1
+### 1 mIn
 The raw input file(s) for the MTurk project, placed here by the user. 
-(here, list of universities)
+(for me, a list of universities)
 
-# 2 
+### 2 mOut
 The raw output file(s) of the Mturk-based scrape placed here by the user.
-(here, it will be a redundant, messy list of links to universities' directory of clubs)
+(for me, it will be a redundant, messy list of links to universities' directory of clubs)
 
-# 3 
-The cleaned output file(s) from the Mturk-scrape which is the input of the next Mturk scrape (inserted here by the notebook).
-You will need to manually inspect the cleaned output file based on the HITs' scores, and the quality of their output.
-With multiple files, they should be manually assembled in excel/google sheets in a final output.
-(here, it will be a list of club directories for universities)
+### 3 notebookCleaned
+The cleaned output file(s) from the Mturk-scrape (inserted here by the notebook).
+(for me, it will be lists of club directories for universities)
 
-# 4
+### 4 manualCleaned_mIn
+Use this folder to copy in the file(s) from 3. For each file Then manually inspect and where necessary, modify the cleaned output file based on the HITs' scores, and the quality of their output.
+Note the rejected HITs and HITs that will need to be repeated, this list is fed back to folder 1 for another batch of gathering.
+With multiple files, they should be manually assembled in a new excel file, which is the input of the next Mturk scrape.
+(for me, it will be lists of club directories for universities)
+
+### 5 mOut
 The raw output file(s) of the Mturk-based scrape (placed here by the user).
-(here, it will be a redundant, messy list of clubs that match a certain criteria with the link to their information page)
+(for me, it will be a redundant, messy list of clubs that match a certain criteria with the link to their information page)
 
-# 5
-The cleaned output file(s) from the Mturk-scrape which is the input of the next Mturk scrape (inserted here by the notebook). 
+### 6 notebookCleaned
+The cleaned output file(s) from the Mturk-scrape (inserted here by the notebook). 
+(for me, it will be a list of clubs that match a certain criteria, and the link to their information page)
+
+### 7 manualCleaned_mIn
 You will need to manually inspect the cleaned output file based on the HITs' scores, and the quality of their output.
-With multiple files they should be manually assembled in a new excel file.
-(here, it will be a list of clubs that match a certain criteria, and the link to their information page)
+Note the rejected HITs and HITs that will need to be repeated, this list is fed back to folder 4 for another batch of gathering.
+With multiple files they should be manually assembled in a new excel file, which is the input of the next Mturk scrape.
+(for me, it will be a list of clubs that match a certain criteria, and the link to their information page)
 
-# 6
+### 8 mOut
 The raw output file(s) of the Mturk-based scrape (placed here by the user).
-(here, it will be a redundant, messy list of university club's contact information)
+(for me, it will be a redundant, messy list of university club's contact information)
 
-# 7 
-The cleaned output files from the Mturk-scrape. 
+### 9 notebookCleaned
+The cleaned output file(s) from the Mturk-scrape. 
+(for me, it will be a list of contact information for each of the student organizations you might want to connect with)
+
+### 10 manualCleaned_leads
+You will need to manually inspect the cleaned output file based on the HITs' scores, and the quality of their output.
+Note the rejected HITs and HITs that will need to be repeated, this list is fed back to folder 7 for another batch of gathering.
 With multiple files they should be manually assembled in a new excel file.
-(here, it will be a list of contact information for each of the student organizations you might want to connect with)
-
-
+(for me, it will be a list of contact information for each of the student organizations you might want to connect with)
 
