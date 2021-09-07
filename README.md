@@ -1,5 +1,3 @@
-![Lead gathering MTurks Assistant dataflow](https://user-images.githubusercontent.com/31664870/132380519-d7ec3170-f07f-4a71-9e80-45a72a0c8a23.jpg)
-![Lead gathering MTurks Assistant basic concept](https://user-images.githubusercontent.com/31664870/132380520-e7afec0c-eb67-4cca-971a-49829f72baf9.jpg)
 # mturks_assistant
 ### A series of .ipynb notebooks used to manage large scale multiphase data scraping using Mechanical Turks
 This series of .ipynb notebooks is used to quickly clean and process data gathered with Mechanical Turk projects, with the goal of minimizing the effort of manually checking/accepting/rejecting HITs. This method is originally designed for lead gathering, converting a broad list of search-areas into a list of specific leads. Due to the complexity of this process and the resulting difficulty in ensuring quality control from malicious or low quality MTurks, this is treated as a multi-phase data-gathering project with automated data cleaning and quality control exercised at each phase. As I revise the data pipeline I will try to make it as generalizeable as possible, but the initial use case is for gathering email addresses.
@@ -63,3 +61,5 @@ Note the rejected HITs and HITs that will need to be repeated, this list is fed 
 With multiple files they should be manually assembled in a new excel file.
 (for me, it will be a list of contact information for each of the student organizations you might want to connect with)
 
+![Lead gathering MTurks Assistant basic concept](https://user-images.githubusercontent.com/31664870/132401504-9fe6bc29-4832-4edd-b8e5-4c3e5d99bb9e.jpg)
+![Lead gathering MTurks Assistant dataflow](https://user-images.githubusercontent.com/31664870/132401506-6193d421-27d3-443b-bcf5-3ba5eb59b67b.jpg)
