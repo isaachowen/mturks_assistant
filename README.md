@@ -1,43 +1,40 @@
 # atomized_webscrape_data_pipeline_with_mturks
 ### A system to automate labor-intensive webscraping leveraging Amazon Mechanical Turks and a data quality management "state machine." 
 
+## Cheaply and quickly assemble a list of email addresses for an email mass marketing campaign.
+This instance of the project takes a list of thousands of American universities and a desired marketing demographic and outputs a relevant list of email addresses for students and clubs across those universities. 
+Granular contact information is gathered across highly varied website formats en-masse by an "army" of Mechanical Turks completing thousands of small tasks concurrently over a few hours.
+The system relies on automated validation of their work.
+This project saved ~160 hours of manual research and data entry work, and gathered ~3,200 targeted leads for ~$1,000, costing $0.31 per lead (including email address, name, club name, relevant topics of interest).
+
+### Automated webscraping requires well-understood website format.
+If there are many different websites of interest containing data you want to scrape, writing scripts that crawl through all the different websites is not practical.
+Performing the work manually is often the only realistic way of gathering that information because of the ad-hoc human judgement required to navigate a website's UI (Prior to the advent of LLM-based agents. This project was built before the release of ChatGPT.)
+
+### Mechanical Turks Crowdsources Simple Tasks That Require Human Judgement
+[Amazon Mechanical Turks](https://www.mturk.com/) is a tool for cheaply performing tasks that require ad-hoc human insight at scale. 
+A "requester" defines a simple task (called a [Human Intelligence Task, or HIT](https://blog.mturk.com/tutorial-understanding-hits-and-assignments-d2be35102fbd)), and offer a small payment for that tasks' completion (as little as $0.01 per task). 
+For example, a task employed in this project is "google this university and paste the link to their homepage in the form." I paid a Mechanical Turk $0.03 to perform that task.
+
+Remote gig workers, called "Mechanical Turks" may then volunteer to perform one or more instances of that HIT, based on the difficulty of the task and the payment amount.
+The completed HIT can then be accepted or rejected by the requester.
+HITs work better when the task is simple, clearly defined, and appropriately priced for the amount of effort.
+Simpler tasks are generally cheaper, more complex tasks are more expensive.
+
+### HIT validation is essential and should be automated
+Due to the nature of this system, the quality of work performed by Turks varies widely. You can avoid paying for a bad HIT by rejecting it. You can then relist the HIT for another Turk to pick up.
+Verifying the work essentially requires you to perform the HIT yourself, so automating the validation of HITs should be done where possible.
+
+### Improve HIT success by minimizing HIT complexity
+One key assumption I made was that defining one HIT for the entire project would be too expensive, time consuming and complex for me to efficiently verify.
+Similarly, defining a HIT to gather all relevant email addresses for a university was also too complex for me to efficiently verify.
+Because of the impracticality of verifying Turks' work, the research process is broken into a pipeline of steps, where each step of the research is an easy-to-verify HIT that is as simple as possible for the Turks to execute.
+I chained 3 Mechanical Turk projects together with an automated validation process of the HITs.
 
 ![Lead gathering MTurks Assistant Data Flow](https://user-images.githubusercontent.com/31664870/133171898-261ab115-5002-44f8-a4bb-017f26fc29e9.jpg)
 
-Amazon Mechanical Turk Website 
-Explanation of a Human Intelligence Task (HIT) 
-
-## Summary
-I would like to make this project widely generalizable, but this is an implementation for a specific web scraping use case.
-
-The end-to-end project assembles a list of email addresses for an email mass marketing campaign. Gather large quantities of focused, quality leads at a very low price.
-It takes a list of thousands of American universities and a desired marketing demographic and outputs a relevant, filtered list of email addresses for students and clubs across those universities. 
-The time-consuming process of gathering that granular data across highly varied website formats is done en-masse by an "army" of Mechanical Turks working concurrently over the course of a few hours relying on automated validation of their work.
-This project is estimated to have saved ~160 hours of manual research and data entry work, and gathered ~3,200 targeted leads for ~$1,000, costing $0.31 per lead (including email address, name, club name, relevant topics of interest).
-
-Webscraping is difficult. It can be difficult to automate using scripts that crawl through a website if the website structure is not well understood. This is case for gathering information across thousands of different university websites. Performing the work manually is often the only realistic way of gathering that information because of the ad-hoc human judgement required to navigate a website (Prior to the advent of LLM-based agents. This project was built before the release of ChatGPT.)
-
-Mechanical Turks Crowdsources Simple Tasks That Require Human Judgement
-[Amazon Mechanical Turks](https://www.mturk.com/) is an attractive tool for cheaply performing tasks that require ad-hoc human insight at a massive scale, like basic research tasks. 
-You define a simple task (called a [Human Intelligence Task, or HIT](https://blog.mturk.com/tutorial-understanding-hits-and-assignments-d2be35102fbd)) for a remote gig worker to complete, and offer a small fee for that tasks' completion (as little as $0.01 per task). Mechanical Turks volunteer to perform one or more instances of that task at the set price.
-For example, a task employed in this project is "google this university and paste the link to their homepage in the form." I paid a Mechanical Turk $0.03 to perform that task.
-HITs work better when the task is simple, clearly defined, and appropriately priced for the amount of effort.
-The simpler the task, the smaller the price of an individual HIT.
-
-HIT validation is essential and should be automated
-Due to the nature of this system, you should not trust that a HIT was performed correctly. 
-The quality of the work performed by Mechanical Turks varies widely, and bad HITs can be accepted or rejected.
-Manually verifying the work removes the benefit of using Mechanical Turks, because the verifying a task requires you to perform the HIT yourself.
-Thus, automating the validation of HITs should be done where possible.
-
-Improve HIT success by minimizing HIT complexity
-One key assumption I made was that defining one HIT per university, "Gather all student email addresses from the club directory for ABC university where the club topic is related to XYZ topic." was too complex a task for a Mechanical Turk, and would be too complex to efficiently verify. 
-Because of this impracticality, the research process is broken into a pipeline of steps, where each step of the research is a Turk Project with its maximally simplified HIT.
-Due to the simple nature of the HIT outputs, it was a straightforward process of validating the HIT quality at each step. 
-I chained 3 Mechanical Turk projects together with an automated validation process of the HITs.
-
-The HIT Pipeline With Validation Steps
-This repo contains a series of Jupyter notebook scripts that perform the complementary cleaning and validation of the HIT outputs gathered by the Mechanical Turks. It forwards validated HITs forward to the next step of the pipeline, rejects and reruns invalid HITs, and flags HITs where the validation outcome is uncertain. Only the "uncertain" flagged HITs require manual verification. I want to minimize the amount of manual effort I need to spend verifying HITs.
+### The HIT Fanout + Validation Pipeline
+This repo contains a series of Jupyter notebook scripts that perform the complementary cleaning and validation of the HIT outputs at the three stages of the pipeline. It forwards validated HITs forward to the next step of the pipeline, rejects and reruns invalid HITs, and flags HITs where the validation outcome is uncertain. Only the "uncertain" flagged HITs require manual verification. I want to minimize the amount of manual effort I need to spend verifying HITs.
 
 This quality control process can be partially automated with this workbook.
 Using HIT redundancy, one can compare the output of the same HIT from different Turks.
@@ -106,5 +103,3 @@ With multiple files they should be manually assembled in a new excel file.
 
 ### 11_allLeads
 Manually assemble all leads in an excel sheet or csv to be fed into your CRM or mass email system.
-
-
