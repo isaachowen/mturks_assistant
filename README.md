@@ -6,7 +6,7 @@ It took a list of thousands of American universities and a desired marketing dem
 
 ## Traditional automated webscraping requires well-understood website format.
 If there are many different websites of interest containing data you want to scrape, writing scripts that crawl through all the different websites is not practical.
-Performing the work manually is often the only realistic way of gathering that information because of the ad-hoc human judgement required to navigate a website's UI (Prior to the advent of LLM-based agents. This project was built before the release of ChatGPT.)
+Performing the work manually is often the most practical way of gathering that information because of the ad-hoc human judgement required to navigate a website's UI (LLM-based agents may have solved this problem).
 
 ## Mechanical Turks crowdsources simple tasks that require human judgement
 [Amazon Mechanical Turks](https://www.mturk.com/) is a tool for cheaply performing tasks that require ad-hoc human insight at scale. 
@@ -44,15 +44,17 @@ This repo contains a series of scripts that build the pipeline of directories th
 ![Lead gathering MTurks Assistant Data Flow](https://user-images.githubusercontent.com/31664870/133171898-261ab115-5002-44f8-a4bb-017f26fc29e9.jpg)
 
 ## How validation works
-Using HIT redundancy, one can compare the output of the same HIT from different Turks.
-The less variation across redundant HITs, the more trustworthy the resulting outcome. If each redundant HIT has different information, some of the Mechanical Turks might have made mistakes or given a spam result hoping for a free HIT fee.
-So if there is inconsistency/variation in the results, you need to manually check them. 
-The variation can be measured by entropy or a simpler metric.
+The more information we can use to automatically infer HIT quality, the more time you can save searching for and manually validating unvalidated HITs.
+- Simple string parsing and regex
+    - Some HITs can be easily identified as invalid based on simple string checking with regex, depending on the specific HIT.
+- I implemented a "trustworthiness" score for each HIT that we use to prioritize which HITs to manually check, and automatically forward trusted HITs.
+- HIT redundancy and cross validation
+    - By using HIT redundancy, having n Turks perform the same HIT instance n times, you can get multiple outputs for the same HIT instance that can be cross-referenced. 
+    - The less variation across redundant HITs, the more trustworthy the resulting output. If the n redundant HITs produce different outputs across the n Turks, some subset of the Turks are producing bad outputs.
+    - The more variation of the results, the more that HIT instance demands your attention. This allows you to filter out the HITs you want to automatiacally approve, and filter on the subset of hits that require your manual attention, in a prioritized order based on the variation within the HIT instance.
+    - The variation can be measured by entropy or a simpler metric.
 
-MTurk reliability can also be inferred, used to further inform the HIT trustworthiness score, and potentially reject all their work in case they are malicious or sloppy.
-The more information we can use to automatically infer HIT quality, the more time you can save searching for and rejecting low quality HITs.
-I implemented a "trustworthiness" score for each HIT that we use to prioritize which HITs to manually check, and automatically forward trusted HITs.
-Furthermore, some HITs can be easily identified as invalid based on simple string checking with regex, depending on the specific HIT.
+Furthermore, MTurk reliability can be inferred from the HIT ID and percentage of rejected work, which could further inform the HIT trustworthiness/variation score, and potentially flag a bad Turk's HITs for automatic rejection, or blocking the Turk.
 
 ## How to use the tool
 - The notebooks create a project directory and create subdirectories to identify the steps that they correspond to.
