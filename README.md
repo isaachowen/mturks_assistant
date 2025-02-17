@@ -1,8 +1,8 @@
 # Fanned out multiphase webscrape pipeline with Mechanical Turks and automated validation
 This is a system to cheaply and quickly assemble contacts for an email marketing campaign. It automates labor-intensive webscraping using Amazon Mechanical Turks and a data quality management pipeline. 
 Granular contact information is gathered across highly varied website formats en-masse by an "army" of Mechanical Turks completing thousands of small tasks concurrently over a few hours.
-This project saved ~160 hours of manual research and data entry work, and gathered ~3,200 targeted leads for ~$1,000, costing $0.31 per lead (including email address, name, club name, relevant topics of interest).
-This instance of the project takes a list of thousands of American universities and a desired marketing demographic and outputs a list of email addresses for students and clubs across those universities. 
+This instance of the project saved ~160 hours of manual research and data entry work, and gathered ~3,200 targeted leads for ~$1,000, costing $0.31 per lead (including email address, name, club name, relevant topics of interest).
+It took a list of thousands of American universities and a desired marketing demographic and outputs a list of email addresses for students and clubs across those universities. 
 
 ## Traditional automated webscraping requires well-understood website format.
 If there are many different websites of interest containing data you want to scrape, writing scripts that crawl through all the different websites is not practical.
