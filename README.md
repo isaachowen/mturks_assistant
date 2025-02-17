@@ -43,6 +43,8 @@ The three HITs were:
 ### The HIT Fanout + Validation Pipeline
 This repo contains a series of scripts that build the pipeline of directories that hold the perform the complementary cleaning and validation of the HIT outputs at the three stages of the pipeline. It forwards validated HITs forward to the next step of the pipeline, rejects and reruns invalid HITs, and flags HITs where the validation outcome is uncertain. Only the "uncertain" flagged HITs require manual verification. I want to minimize the amount of manual effort I need to spend verifying HITs.
 
+![Lead gathering MTurks Assistant Data Flow](https://user-images.githubusercontent.com/31664870/133171898-261ab115-5002-44f8-a4bb-017f26fc29e9.jpg)
+
 ### How validation works
 Using HIT redundancy, one can compare the output of the same HIT from different Turks.
 The less variation across redundant HITs, the more trustworthy the resulting outcome. If each redundant HIT has different information, some of the Mechanical Turks might have made mistakes or given a spam result hoping for a free HIT fee.
@@ -53,8 +55,6 @@ MTurk reliability can also be inferred, used to further inform the HIT trustwort
 The more information we can use to automatically infer HIT quality, the more time you can save searching for and rejecting low quality HITs.
 I implemented a "trustworthiness" score for each HIT that we use to prioritize which HITs to manually check, and automatically forward trusted HITs.
 Furthermore, some HITs can be easily identified as invalid based on simple string checking with regex, depending on the specific HIT.
-
-![Lead gathering MTurks Assistant Data Flow](https://user-images.githubusercontent.com/31664870/133171898-261ab115-5002-44f8-a4bb-017f26fc29e9.jpg)
 
 ## How to use the tool
 - The notebooks create a project directory and create subdirectories to identify the steps that they correspond to.
