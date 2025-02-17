@@ -1,13 +1,13 @@
 # atomized_webscrape_data_pipeline_with_mturks
 ### A system to automate labor-intensive webscraping leveraging Amazon Mechanical Turks and a data quality management "state machine." 
 
-## Cheaply and quickly assemble a list of email addresses for an email mass marketing campaign.
+## Cheaply and quickly assemble contacts for an email marketing campaign.
 This instance of the project takes a list of thousands of American universities and a desired marketing demographic and outputs a relevant list of email addresses for students and clubs across those universities. 
 Granular contact information is gathered across highly varied website formats en-masse by an "army" of Mechanical Turks completing thousands of small tasks concurrently over a few hours.
 The system relies on automated validation of their work.
 This project saved ~160 hours of manual research and data entry work, and gathered ~3,200 targeted leads for ~$1,000, costing $0.31 per lead (including email address, name, club name, relevant topics of interest).
 
-### Automated webscraping requires well-understood website format.
+### Traditional automated webscraping requires well-understood website format.
 If there are many different websites of interest containing data you want to scrape, writing scripts that crawl through all the different websites is not practical.
 Performing the work manually is often the only realistic way of gathering that information because of the ad-hoc human judgement required to navigate a website's UI (Prior to the advent of LLM-based agents. This project was built before the release of ChatGPT.)
 
@@ -38,7 +38,7 @@ The three HITs were:
 2. For the club directory at <university name>, enter all club names and urls that would be interested in XYZ topic
 3. For the <club name> club at url <club url>, enter all available email addresses for officers and members
 
-![Lead gathering MTurks Assistant Data Flow](https://user-images.githubusercontent.com/31664870/133171898-261ab115-5002-44f8-a4bb-017f26fc29e9.jpg)
+![Lead gathering MTurks Assistant basic concept](https://user-images.githubusercontent.com/31664870/132401504-9fe6bc29-4832-4edd-b8e5-4c3e5d99bb9e.jpg)
 
 ### The HIT Fanout + Validation Pipeline
 This repo contains a series of scripts that build the pipeline of directories that hold the perform the complementary cleaning and validation of the HIT outputs at the three stages of the pipeline. It forwards validated HITs forward to the next step of the pipeline, rejects and reruns invalid HITs, and flags HITs where the validation outcome is uncertain. Only the "uncertain" flagged HITs require manual verification. I want to minimize the amount of manual effort I need to spend verifying HITs.
@@ -54,7 +54,7 @@ The more information we can use to automatically infer HIT quality, the more tim
 I implemented a "trustworthiness" score for each HIT that we use to prioritize which HITs to manually check, and automatically forward trusted HITs.
 Furthermore, some HITs can be easily identified as invalid based on simple string checking with regex, depending on the specific HIT.
 
-![Lead gathering MTurks Assistant basic concept](https://user-images.githubusercontent.com/31664870/132401504-9fe6bc29-4832-4edd-b8e5-4c3e5d99bb9e.jpg)
+![Lead gathering MTurks Assistant Data Flow](https://user-images.githubusercontent.com/31664870/133171898-261ab115-5002-44f8-a4bb-017f26fc29e9.jpg)
 
 ## How to use the tool
 - The notebooks create a project directory and create subdirectories to identify the steps that they correspond to.
