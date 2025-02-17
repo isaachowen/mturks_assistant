@@ -2,7 +2,7 @@
 ### A system to automate labor-intensive webscraping leveraging Amazon Mechanical Turks and a data quality management "state machine." 
 
 ## Cheaply and quickly assemble contacts for an email marketing campaign.
-This instance of the project takes a list of thousands of American universities and a desired marketing demographic and outputs a relevant list of email addresses for students and clubs across those universities. 
+This instance of the project takes a list of thousands of American universities and a desired marketing demographic and outputs a list of email addresses for students and clubs across those universities. 
 Granular contact information is gathered across highly varied website formats en-masse by an "army" of Mechanical Turks completing thousands of small tasks concurrently over a few hours.
 The system relies on automated validation of their work.
 This project saved ~160 hours of manual research and data entry work, and gathered ~3,200 targeted leads for ~$1,000, costing $0.31 per lead (including email address, name, club name, relevant topics of interest).
@@ -11,7 +11,7 @@ This project saved ~160 hours of manual research and data entry work, and gather
 If there are many different websites of interest containing data you want to scrape, writing scripts that crawl through all the different websites is not practical.
 Performing the work manually is often the only realistic way of gathering that information because of the ad-hoc human judgement required to navigate a website's UI (Prior to the advent of LLM-based agents. This project was built before the release of ChatGPT.)
 
-### Mechanical Turks Crowdsources Simple Tasks That Require Human Judgement
+### Mechanical Turks crowdsources simple tasks that require human judgement
 [Amazon Mechanical Turks](https://www.mturk.com/) is a tool for cheaply performing tasks that require ad-hoc human insight at scale. 
 A "requester" defines a simple task (called a [Human Intelligence Task, or HIT](https://blog.mturk.com/tutorial-understanding-hits-and-assignments-d2be35102fbd)), and offer a small payment for that tasks' completion (as little as $0.01 per task). 
 For example, a task employed in this project is "google this university and paste the link to their homepage in the form." I paid a Mechanical Turk $0.03 to perform that task.
@@ -26,10 +26,11 @@ Due to the nature of this system, the quality of work performed by Turks varies 
 Verifying the work essentially requires you to perform the HIT yourself, so automating the validation of HITs should be done where possible.
 
 ### Automate HIT validation by implementing a sequence of 3 "fanout" HIT tasks
-It is not possible to automate the validation of complex HITs. Validating a single HIT encapsulating the entire webscraping campaign would be prohibitively expensive, time consuming and complex.
+It is not possible to automate the validation HITs that are too complex. 
+Validating a single HIT encapsulating the entire webscraping campaign would be prohibitively expensive, time consuming and complex.
 Similarly, verifying one HIT per university, where the task is to gather all relevant emails for a university, would also be impossible to automate.
 
-To make possible the automation of validating HITs, the web scraping campaign is broken into a pipeline of simpler webscrape steps, where each step of the research is an easy-to-validate HIT.
+To make possible the automation of validating HITs, the web scraping campaign is broken into a pipeline of simplified webscrape steps that where each step of the research is an easy-to-validate HIT.
 Simplifying the webscrape campaign into a series of simpler HITs also allows for a cheaper cost-per-hit.
 I chained 3 webscrape HITs together into a "fanout" to enable simple automated automated validation of each of the 3 webscrape HITs.
 
@@ -63,7 +64,8 @@ Furthermore, some HITs can be easily identified as invalid based on simple strin
 - Redundant HITs are collated and analyzed, and Mturks are scored, to create a trustworthiness index with which you the reviewer can use to prioritize, check, and reject or accept unreliable HITs. You can also reject or block unreliable Turks.
 - Use excel not csv because excel can be edited both by notebooks and manually. This works in google colab as well. 
 
-### The directories created inside of the project directory represent the most granular view of the pipeline.
+### The pipeline directories
+These directories are created inside of the project directory and represent the most granular view of the pipeline.
 
 #### 1_mIn_unis
 The raw input file(s) for the MTurk project, placed here by the user. 
