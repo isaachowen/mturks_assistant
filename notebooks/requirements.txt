@@ -1,0 +1,3 @@
+pandas
+nbdime
+nbstripout
