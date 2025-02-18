@@ -1,0 +1,5 @@
+# Apply nbstripout filter to Jupyter notebooks to remove outputs before commit
+*.ipynb filter=nbstripout
+
+# Use nbdime for better diffs of Jupyter notebooks
+*.ipynb diff=ipynb
