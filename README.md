@@ -114,3 +114,17 @@ With multiple files they should be manually assembled in a new excel file.
 
 #### 11_allLeads
 Manually assemble all leads in an excel sheet or csv to be fed into your CRM or mass email system.
+
+### Enable convenient git commits for the local repo. 
+Within the repo, after pip installing requirements in your python virtual environment, run the following:
+```
+git config --local diff.ipynb.textconv "nbdime diff"
+git config --local difftool.ipynb.cmd "nbdime difftool"
+git config --local merge.tool nbdime
+git config --local mergetool.nbdime.cmd "nbdime merge"
+
+
+git config --local filter.nbstripout.clean "nbstripout"
+git config --local filter.nbstripout.smudge cat
+git config --local filter.nbstripout.required true
+```
