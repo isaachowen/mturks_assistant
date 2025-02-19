@@ -66,53 +66,53 @@ Furthermore, MTurk reliability can be inferred from the HIT ID and percentage of
 ## The pipeline directories
 These directories are created inside of the project directory and represent the most granular view of the pipeline.
 
-#### 1_mIn_unis
+#### 1_request_data__unis
 The raw input file(s) for the MTurk project, placed here by the user. 
 (for me, a list of universities)
 
-#### 2_mOut_dirs
+#### 2_hits__club_lists
 The raw output file(s) of the Mturk-based scrape placed here by the user.
 (for me, it will be a redundant, messy list of links to universities' directory of clubs)
 
-#### 3_notebookProcessed_dirs
+#### 3_hits__club_lists_labeled
 The cleaned output file(s) from the Mturk-scrape (inserted here by the notebook).
 (for me, it will be lists of club directories for universities)
 
-#### 4_manualCleaned_mIn_dirs
+#### 4_request_data__club_lists
 Use this folder to copy in the file(s) from 3. For each file Then manually inspect and where necessary, modify the cleaned output file based on the HITs' scores, and the quality of their output.
 Note the rejected HITs and HITs that will need to be repeated, this list is fed back to folder 1 for another batch of gathering.
 With multiple files, they should be manually assembled in a new excel file, which is the input of the next Mturk scrape.
 (for me, it will be lists of club directories for universities)
 
-#### 5_mOut_clubs
+#### 5_hits__clubs
 The raw output file(s) of the Mturk-based scrape (placed here by the user).
 (for me, it will be a redundant, messy list of clubs that match a certain criteria with the link to their information page)
 
-#### 6_notebookProcessed_clubs
+#### 6_hits__clubs_labeled
 The cleaned output file(s) from the Mturk-scrape (inserted here by the notebook). 
 (for me, it will be a list of clubs that match a certain criteria, and the link to their information page)
 
-#### 7_manualCleaned_mIn_clubs
+#### 7_request_data__clubs
 You will need to manually inspect the cleaned output file based on the HITs' scores, and the quality of their output.
 Note the rejected HITs and HITs that will need to be repeated, this list is fed back to folder 4 for another batch of gathering.
 With multiple files they should be manually assembled in a new excel file, which is the input of the next Mturk scrape.
 (for me, it will be a list of clubs that match a certain criteria, and the link to their information page)
 
-#### 8_mOut_leads
+#### 8_hits__leads
 The raw output file(s) of the Mturk-based scrape (placed here by the user).
 (for me, it will be a redundant, messy list of university club's contact information)
 
-#### 9_notebookProcessed_leads
+#### 9_hits__leads_labeled
 The cleaned output file(s) from the Mturk-scrape. 
 (for me, it will be a list of contact information for each of the student organizations you might want to connect with)
 
-#### 10_manualCleaned_leads
+#### 10_leads
 You will need to manually inspect the cleaned output file based on the HITs' scores, and the quality of their output.
 Note the rejected HITs and HITs that will need to be repeated, this list is fed back to folder 7 for another batch of gathering.
 With multiple files they should be manually assembled in a new excel file.
 (for me, it will be a list of contact information for each of the student organizations you might want to connect with)
 
-#### 11_allLeads
+#### 11_leads_accumulator
 Manually assemble all leads in an excel sheet or csv to be fed into your CRM or mass email system.
 
 ### Enable convenient git commits for the local repo. 
