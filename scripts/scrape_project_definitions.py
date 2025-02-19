@@ -10,5 +10,5 @@ def get_git_root():
 
 repo_root = get_git_root()
 project_name = "example_project"
-scripts_path = f"{repo_root}/scripts" # should detect self path or root of repo
-project_root = f"{repo_root}/scrape_pipelines/{project_name}"
+project_path = f"{repo_root}/scrape_pipelines/{project_name}"
+scripts_path = f"{repo_root}/scripts"

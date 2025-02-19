@@ -1,5 +1,8 @@
 # Manually added
 .project_venv
+legacy_project_residue/
+scrape_pipelines/*
+!scrape_pipelines/example_project/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
