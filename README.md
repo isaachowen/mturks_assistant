@@ -36,13 +36,11 @@ The three HITs were:
 2. For the club directory at <university name>, enter all club names and urls that would be interested in XYZ topic
 3. For the <club name> club at url <club url>, enter all available email addresses for officers and members
 
-![Lead gathering MTurks Assistant basic concept](https://user-images.githubusercontent.com/31664870/132401504-9fe6bc29-4832-4edd-b8e5-4c3e5d99bb9e.jpg)
 ![Fan Out Diagram](_fanout_diagram.jpeg)
 
 ## The HIT Fanout + Validation Pipeline
 This repo contains a series of scripts that build the pipeline of directories that hold the perform the complementary cleaning and validation of the HIT outputs at the three stages of the pipeline. It forwards validated HITs forward to the next step of the pipeline, rejects and reruns invalid HITs, and flags HITs where the validation outcome is uncertain. Only the "uncertain" flagged HITs require manual verification. I want to minimize the amount of manual effort I need to spend verifying HITs.
 
-![Lead gathering MTurks Assistant Data Flow](https://user-images.githubusercontent.com/31664870/133171898-261ab115-5002-44f8-a4bb-017f26fc29e9.jpg)
 ![Pipeline Diagram](_pipeline_diagram.jpeg)
 
 
