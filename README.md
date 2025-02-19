@@ -32,9 +32,9 @@ Simplifying the webscrape campaign into a series of simpler HITs also allows for
 I chained 3 webscrape HITs together into a "fanout" to enable simple automated automated validation of each of the 3 webscrape HITs.
 
 The three HITs were:
-1. For <university name>, locate and paste in the student club directory url
-2. For the club directory at <university name>, enter all club names and urls that would be interested in XYZ topic
-3. For the <club name> club at url <club url>, enter all available email addresses for officers and members
+1. For \<university name\>, locate and paste in the student club directory url
+2. For the club directory at \<university name\>, enter all club names and urls that would be interested in XYZ topic
+3. For the \<club name\> club at url \<club url\>, enter all available email addresses for officers and members
 
 ![Fan Out Diagram](_fanout_diagram.jpeg)
 
